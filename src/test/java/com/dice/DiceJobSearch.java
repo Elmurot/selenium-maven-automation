@@ -1,5 +1,6 @@
 package com.dice;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +9,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DiceJobSearch {
 	public static void main(String[] args) {
-
+		
 		WebDriverManager.chromedriver().setup(); // set up ChromeDriver path
 		WebDriver driver = new ChromeDriver(); // invoke Selenium WebDriver
 		driver.manage().window().fullscreen(); // to make screen full screen
@@ -25,9 +26,9 @@ public class DiceJobSearch {
 			System.out.println("Dice homepage successfully loaded");
 			throw new RuntimeException("Dice homepage successfully loaded");
 		}
-		String job = "Java Developer";
+		String job = "Javascript Developer";
 		driver.findElement(By.id("search-field-keyword")).sendKeys(job);
-		String location = "22102";
+		String location = "77064";
 		driver.findElement(By.id("search-field-location")).clear();
 		driver.findElement(By.id("search-field-location")).sendKeys(location);
 		driver.findElement(By.id("findTechJobs")).click();
@@ -40,6 +41,7 @@ public class DiceJobSearch {
 			System.out.println("Step FAIL: Job: " +job +" search returned " + countResult + " result in " + location);
 		}
 		driver.close();
+		System.out.println("Test completed - " + LocalDateTime.now());
 	}
 	
 }
